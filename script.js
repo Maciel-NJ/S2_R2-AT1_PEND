@@ -1,12 +1,19 @@
-
+const input = document.getElementById("inputTarefa");
 const botao = document.getElementById("btnAdicionar");
-const mensagem = document.getElementById("mensagem");
-
-
-mensagem.textContent = "Clique no botão para mudar este texto.";
-
+const lista = document.getElementById("listaTarefas");
 
 botao.addEventListener("click", function() {
-mensagem.textContent = "Texto altreado com JavaScript!";
+
+  
+    const texto = input.value;
+
+
+    const novoItem = document.createElement("li");
+
+    novoItem.textContent = texto;
+    novoItem.classList.add("list-group-item");
+
+ 
+    lista.appendChild(novoItem);
 
 });
