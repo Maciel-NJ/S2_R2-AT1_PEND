@@ -3,7 +3,8 @@ const botao = document.getElementById("btnAdicionar");
 const lista = document.getElementById("listaTarefas");
 const mensagem = document.getElementById("mensagem");
 
-botao.addEventListener("click", function() {
+
+botao.addEventListener("click", function () {
 
     const texto = input.value;
 
@@ -11,20 +12,33 @@ botao.addEventListener("click", function() {
     if (texto === "") {
         mensagem.textContent = "Tarefa vazia!";
         mensagem.className = "text-danger fw-bold";
-    } else {
-
-        
-        const novoItem = document.createElement("li");
-        novoItem.textContent = texto;
-        novoItem.classList.add("list-group-item");
-
-        lista.appendChild(novoItem);
-
-        input.value = "";
-
-      
-        mensagem.textContent = "tarefa adicionada com suceso!";
-        mensagem.className = "text-success fw-bold";
+        return;
     }
 
+    const li = document.createElement("li");
+    li.classList.add("list-group-item");
+
+    
+    li.textContent = texto;
+
+    const botaoRemover = document.createElement("button");
+    botaoRemover.textContent = "Remover";
+    botaoRemover.classList.add("btn", "btn-danger", "btn-sm", "ms-2");
+
+    
+    li.appendChild(botaoRemover);
+
+   
+    botaoRemover.addEventListener("click", function () {
+        li.remove();
+    });
+
+  
+    lista.appendChild(li);
+
+  
+    input.value = "";
+  
+    mensagem.textContent = "Tarefa adicionada!";
+    mensagem.className = "text-success fw-bold";
 });
